@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Landing from "./Landing";
+import Certificate from "./pages/Certificate";
+import Verify from "./pages/Verify";
+
+function getRoute(){
+  const host = window.location.host;
+  const reqp = `${window.location.toString().split(host)[1]}`;
+
+  if(reqp == "/#/cert" | reqp == "/#/cert/") return ['verify',<Certificate />]
+  else if(reqp == /\/#\/certi\/[\s\S]*/.exec(reqp) ) return ['certify', <Verify loc={reqp} />]
+  else return ['/', <Landing />]
 }
 
-export default App;
+export default function App() {
+
+  // alert(document.referer)
+
+  var [pathVar,comp] = getRoute()
+  
+  return (
+    comp
+  )
+}
