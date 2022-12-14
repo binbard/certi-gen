@@ -9,7 +9,7 @@ function getRoute(){
   const reqp = `${window.location.toString().split(host)[1]}`;
 
   if(reqp == "/#/cert" | reqp == "/#/cert/") return ['verify',<Certificate />]
-  else if(reqp == /\/#\/certi\/[\s\S]*/.exec(reqp) ) return ['certify', <Verify loc={reqp} />]
+  else if(reqp == /\/#\/cert\/[\s\S]*/.exec(reqp) ) return ['certify', <Verify loc={reqp} />]
   else return ['/', <Landing />]
 }
 
